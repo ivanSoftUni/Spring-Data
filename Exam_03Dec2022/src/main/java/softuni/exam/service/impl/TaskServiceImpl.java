@@ -54,7 +54,6 @@ public class TaskServiceImpl implements TaskService {
         this.modelMapper = modelMapper;
     }
 
-
     @Override
     public boolean areImported() {
         return this.taskRepository.count() > 0;

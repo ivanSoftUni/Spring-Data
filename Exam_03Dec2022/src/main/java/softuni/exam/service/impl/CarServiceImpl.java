@@ -45,7 +45,6 @@ public class CarServiceImpl implements CarService {
     public String readCarsFromFile() throws IOException {
         return Files.readString(CARS_XML_IMPORT_PATH);
     }
-
     @Override
     public String importCars() throws IOException, JAXBException {
         StringBuilder sb = new StringBuilder();
@@ -53,6 +52,7 @@ public class CarServiceImpl implements CarService {
         File file = CARS_XML_IMPORT_PATH.toFile();
         CarsImportWrapperDto carsImportWrapperDto = XmlParser.fromFile(file, CarsImportWrapperDto.class);
         List<CarsImportDto> cars = carsImportWrapperDto.getCars();
+
         for (CarsImportDto dto : cars) {
             boolean isValid = validationUtils.isValid(dto);
             if (isValid) {
